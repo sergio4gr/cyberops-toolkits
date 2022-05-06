@@ -32,6 +32,7 @@ LINUX_PWNKIT_URL="https://github.com/ly4k/PwnKit/raw/main/PwnKit"
 
 WORDLIST_COMMON_URL="https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt"
 WORDLIST_DIRECTORY_MEDIUM_URL="https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/directory-list-2.3-medium.txt"
+WORDLIST_DIRB_BIG_URL="https://raw.githubusercontent.com/v0re/dirb/master/wordlists/big.txt"
 
 
 rm -rf "/opt/windows_tools/" && echo "[-] Deleted windows_tools directory"
@@ -74,6 +75,7 @@ git clone --quiet "$LINUX_JOHNTHERIPPER_URL" "/opt/linux_tools/johntheripper/" >
 mkdir "/opt/wordlists/" && echo "[+] Created wordlists directory"
 curl -s -k -L "$WORDLIST_COMMON_URL" -o "/opt/wordlists/common.txt" >/dev/null && echo "[*] wordlists -> common.txt"
 curl -s -k -L "$WORDLIST_DIRECTORY_MEDIUM_URL" -o "/opt/wordlists/directory-list-2.3-medium.txt" >/dev/null && echo "[*] wordlists -> directory-list-2.3-medium.txt"
+curl -s -k -L "$WORDLIST_DIRB_BIG_URL" -o "/opt/wordlists/big.txt" >/dev/null && echo "[*] wordlists -> big.txt"
 cat /opt/wordlists/* | sort | uniq > "/tmp/directories.txt" && rm /opt/wordlists/* && mv "/tmp/directories.txt" "/opt/wordlists/directories.txt" && echo "[*] wordlists :: merged all wordlists into directories.txt"
 
 
