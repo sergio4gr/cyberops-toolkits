@@ -88,7 +88,7 @@ mkdir "/opt/wordlists/" && echo "[+] Created wordlists directory"
 curl -s -k -L "$WORDLIST_COMMON_URL" -o "/opt/wordlists/common.txt" >/dev/null && echo "[*] wordlists -> common.txt"
 curl -s -k -L "$WORDLIST_DIRECTORY_MEDIUM_URL" -o "/opt/wordlists/directory-list-2.3-medium.txt" >/dev/null && echo "[*] wordlists -> directory-list-2.3-medium.txt"
 curl -s -k -L "$WORDLIST_DIRB_BIG_URL" -o "/opt/wordlists/big.txt" >/dev/null && echo "[*] wordlists -> big.txt"
-cat /opt/wordlists/* | sort | uniq > "/tmp/directories.txt" && rm /opt/wordlists/* && mv "/tmp/directories.txt" "/opt/wordlists/directories.txt" && echo "[*] wordlists :: merged all wordlists into directories.txt"
+cat /opt/wordlists/* | sort --reverse | uniq > "/tmp/directories.txt" && rm /opt/wordlists/* && mv "/tmp/directories.txt" "/opt/wordlists/directories.txt" && echo "[*] wordlists :: merged all wordlists into directories.txt"
 
 
 touch "/opt/aliases" && echo "[+] Created aliases file"
@@ -97,3 +97,4 @@ echo "alias portscan_quick='sudo masscan -p20,21-23,25,53,80,110,111,135,139,143
 echo "alias portscan_udp='sudo nmap -sU -A --top-ports=20 --version-all'" >> /opt/aliases && echo "[*] aliases -> portscan_udp"
 echo "alias vulnscan='sudo nmap -sV --script vuln'" >> /opt/aliases && echo "[*] aliases -> vulnscan"
 echo "alias dirscan='gobuster dir -k -e -w /opt/wordlists/directories.txt -t 50 -u'" >> /opt/aliases && echo "[*] aliases -> dirscan"
+echo "alias dirscan='ffuf -w /opt/wordlists/directories.txt:FUZZ -t 50 -u'" >> /opt/aliases && echo "[*] aliases -> dirscan"
