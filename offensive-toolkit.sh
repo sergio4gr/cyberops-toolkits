@@ -97,4 +97,3 @@ echo "alias portscan_quick='sudo masscan -p20,21-23,25,53,80,110,111,135,139,143
 echo "alias portscan_udp='sudo nmap -sU -A --top-ports=20 --version-all'" >> /opt/aliases && echo "[*] aliases -> portscan_udp"
 echo "alias vulnscan='sudo nmap -sV --script vuln'" >> /opt/aliases && echo "[*] aliases -> vulnscan"
 echo "alias dirscan='gobuster dir -k -e -w /opt/wordlists/directories.txt -t 50 -u'" >> /opt/aliases && echo "[*] aliases -> dirscan"
-echo "alias dirscan='ffuf -w /opt/wordlists/directories.txt:FUZZ -t 50 -u'" >> /opt/aliases && echo "[*] aliases -> dirscan"
